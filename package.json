@@ -1,11 +1,15 @@
 {
-  "name": "battery-health-checker---template-react-ts",
+  "name": "battery-health-checker",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A local Windows battery health checker built with Electron.",
+  "author": "YOUR_GITHUB_USERNAME",
   "type": "module",
+  "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "build:win": "tsc && vite build && electron-builder --win nsis",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -29,6 +33,5 @@
     "vite": "^5.1.6",
     "vite-plugin-electron": "^0.28.6",
     "vite-plugin-electron-renderer": "^0.14.5"
-  },
-  "main": "dist-electron/main.js"
+  }
 }

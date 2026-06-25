@@ -1,10 +1,8 @@
 import { app, BrowserWindow, Menu, ipcMain } from 'electron'
-import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { getBatteryHealth } from './battery'
 
-const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // The built directory structure
@@ -29,15 +27,15 @@ let win: BrowserWindow | null
 
 function createWindow() {
   win = new BrowserWindow({
-    title: 'Battery Health',
-    width: 1080,
-    height: 760,
-    minWidth: 760,
-    minHeight: 680,
+    width: 900,
+    height: 720,
+    minWidth: 620,
+    minHeight: 620,
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
     },
   })
+
 
   win.setTitle('Battery Health')
 

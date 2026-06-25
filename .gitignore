@@ -28,3 +28,15 @@ Thumbs.db
 # Local debugging output
 battery-debug.html
 battery-report-*.html
+
+# Build output
+dist/
+dist-electron/
+release/
+
+# Dependencies
+node_modules/
+
+# Local battery reports / debug files
+battery-report.html
+battery-debug.html
