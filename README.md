@@ -1,30 +1,98 @@
-# React + TypeScript + Vite
+# Battery Health
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small Windows desktop app that reads battery capacity data locally and estimates battery health.
 
-Currently, two official plugins are available:
+![Platform](https://img.shields.io/badge/platform-Windows-0078D4)
+![Built with](https://img.shields.io/badge/built%20with-Electron-47848F)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it does
 
-## Expanding the ESLint configuration
+Battery Health reads the latest battery information reported by Windows and shows:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Estimated battery health percentage
+- Full charge capacity
+- Design capacity
+- Battery model
+- Manufacturer
+- Chemistry
+- Cycle count, when reported by the device
 
-- Configure the top-level `parserOptions` property like this:
+Battery health is calculated as:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```text
+Full charge capacity ÷ Design capacity × 100
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Privacy
+
+Everything runs locally on your Windows device.
+
+- No account
+- No cloud sync
+- No data upload
+- No ads
+- No tracking
+
+## Download
+
+Download the latest installer from the GitHub Releases page:
+
+Battery Health Setup for Windows
+
+## Requirements
+
+Windows 10 or Windows 11
+64-bit system
+
+## Install
+
+1. Download 
+
+```
+Battery Health-Setup-1.0.0.exe
+```
+
+2. Run the installer
+3. Choose Only for me unless you want it installed for every Windows account
+4. Open Battery Health from the Start Menu or desktop shortcut
+5. Click Check battery health
+
+## Notes
+
+- The result is based on the latest capacity values reported by Windows.
+- Capacity estimates can change after charging, discharging, battery calibration, BIOS updates, or driver updates.
+- Some laptops do not report cycle count. In that case the app shows `Not reported by device`.
+- Battery health is different from your current battery percentage.
+  For example, a laptop can be at 62% charge while its estimated battery health is 94%.
+
+## Development
+
+```
+npm install
+npm run dev
+```
+
+### Build Windows installer
+
+```
+npm run build:win
+```
+The installer will be created in:
+
+```
+release/1.0.0/Battery Health-Setup-1.0.0.exe
+```
+
+## Tech stack
+
+```
+Electron
+React
+TypeScript
+Vite
+electron-builder
+```
+
+## LICENSE
+This project is licensed under the MIT License. See LICENSE.
